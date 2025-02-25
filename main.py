@@ -33,7 +33,7 @@ def bfs(g, origin, destiny):
                 q.append(neighbor)
                 predecessors[neighbor] = curr
 
-    return -1, []
+    return []
 
 
 def dfs(g, origin, destiny, visited, current_cost, current_path, max_result):
@@ -55,7 +55,7 @@ def dfs(g, origin, destiny, visited, current_cost, current_path, max_result):
     current_path.pop()
 
 
-if __name__ == "__main__":
+def reader():
     csv = pd.read_csv('./path.csv', names=['origin', 'destiny', 'weight'], skiprows=1)
     g = Graph()
     dg = DisplayGraph()
@@ -68,6 +68,11 @@ if __name__ == "__main__":
         g.add_vertex(origin)
         g.add_vertex(destiny)
         g.add_edge(origin, destiny, weight)
+
+    return g, dg
+
+if __name__ == "__main__":
+    g, dg = reader()
 
     starting = str(input("Escolha uma origem de A a M: ")).upper()
     ending = str(input("Escolha um destino de A a M: ")).upper()
@@ -89,21 +94,13 @@ if __name__ == "__main__":
     else:
         print(f"[DFS] Nenhum caminho encontrado entre {starting} e {ending}")
 
-    plt.figure(figsize=(12, 10))
-    pos = nx.spring_layout(dg, seed=420)
+    plt.figure(figsize=(10, 8))
+    pos = nx.circular_layout(dg)
 
     nx.draw(dg, pos, with_labels=True, node_color='lightgreen', node_size=500, font_size=12, font_weight='bold', edge_color='gray')
 
     edge_labels = {(u, v): d["weight"] for u, v, d in dg.edges(data=True)}
     nx.draw_networkx_edge_labels(dg, pos, edge_labels=edge_labels, font_size=12, font_color="black", font_weight="bold")
-
-    if len(bfs_path) > 1:
-        bfs_edges = [(bfs_path[i], bfs_path[i + 1]) for i in range(len(bfs_path) - 1)]
-        nx.draw_networkx_edges(dg, pos, edgelist=bfs_edges, edge_color='blue', width=2.5, alpha=0.7)
-
-    if len(max_result[1]) > 1:
-        dfs_edges = [(max_result[1][i], max_result[1][i + 1]) for i in range(len(max_result[1]) - 1)]
-        nx.draw_networkx_edges(dg, pos, edgelist=dfs_edges, edge_color='red', width=2.5, alpha=0.7)
 
     plt.title("Visualização do Grafo - Cidades (BFS em azul, DFS em vermelho)")
     plt.show()
