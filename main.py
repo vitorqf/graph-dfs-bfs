@@ -13,7 +13,7 @@ def bfs(g, origin, destiny):
         return -1, []
 
     q = deque([origin])
-    visited = set([origin])
+    visited = list([origin])
     jumps = {origin: 0}
     predecessors = {origin: None}
 
@@ -30,7 +30,7 @@ def bfs(g, origin, destiny):
 
         for neighbor, _ in g.get_neighbors(curr):
             if neighbor not in visited:
-                visited.add(neighbor)
+                visited.append(neighbor)
                 q.append(neighbor)
                 jumps[neighbor] = jumps[curr] + 1
                 predecessors[neighbor] = curr
