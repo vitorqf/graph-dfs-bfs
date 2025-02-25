@@ -14,7 +14,6 @@ def bfs(g, origin, destiny):
 
     q = deque([origin])
     visited = list([origin])
-    jumps = {origin: 0}
     predecessors = {origin: None}
 
     while q:
@@ -26,13 +25,12 @@ def bfs(g, origin, destiny):
                 path.append(curr)
                 curr = predecessors[curr]
             path.reverse()
-            return jumps[destiny], path
+            return path
 
         for neighbor, _ in g.get_neighbors(curr):
             if neighbor not in visited:
                 visited.append(neighbor)
                 q.append(neighbor)
-                jumps[neighbor] = jumps[curr] + 1
                 predecessors[neighbor] = curr
 
     return -1, []
@@ -74,7 +72,8 @@ if __name__ == "__main__":
     starting = str(input("Escolha uma origem de A a M: ")).upper()
     ending = str(input("Escolha um destino de A a M: ")).upper()
 
-    min_jumps, bfs_path = bfs(g, starting, ending)
+    bfs_path = bfs(g, starting, ending)
+    min_jumps = len(bfs_path) - 1
     if min_jumps != -1:
         print(f"[BFS] Menor número de paradas entre {starting} e {ending}: {min_jumps}")
         print(f"[BFS] Caminho: {' -> '.join(bfs_path)}")
