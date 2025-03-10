@@ -1,0 +1,37 @@
+Origem,Destino,Peso
+Sao Paulo,Rio de Janeiro,430
+Sao Paulo,Belo Horizonte,590
+Sao Paulo,Curitiba,408
+Rio de Janeiro,Belo Horizonte,440
+Rio de Janeiro,Curitiba,850
+Belo Horizonte,Curitiba,1000
+Belo Horizonte,Porto Alegre,1700
+Curitiba,Porto Alegre,711
+Porto Alegre,Florianopolis,476
+Florianopolis,Curitiba,300
+Florianopolis,Sao Paulo,705
+Sao Paulo,Brasilia,1015
+Brasilia,Rio de Janeiro,1150
+Brasilia,Belo Horizonte,740
+Brasilia,Goiania,209
+Goiania,Cuiaba,934
+Cuiaba,Campo Grande,694
+Campo Grande,Curitiba,990
+Campo Grande,Porto Alegre,1580
+Porto Alegre,Montevideo,850
+Montevideo,Buenos Aires,220
+Buenos Aires,Cordoba,700
+Cordoba,Mendoza,650
+Mendoza,Santiago,360
+Santiago,La Paz,1870
+La Paz,Lima,1580
+Lima,Quito,1350
+Quito,Bogota,725
+Bogota,Caracas,1020
+Caracas,Belem,2500
+Belem,Fortaleza,1610
+Fortaleza,Recife,800
+Recife,Salvador,840
+Salvador,Belo Horizonte,1370
+Salvador,Brasilia,1440
+Salvador,Rio de Janeiro,1640

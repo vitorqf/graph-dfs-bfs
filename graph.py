@@ -50,15 +50,17 @@ class Graph:
 
         return neighbors
 
-    def add_vertex(self, name):
-        if name in self.vertex_map:
+    def add_vertex(self, name: str):
+        if name.upper() in self.vertex_map:
             return
         
-        self.vertex_map[name] = self.num_vertices
+        self.vertex_map[name.upper()] = self.num_vertices
         self.graph.append(List())
         self.num_vertices += 1
 
     def add_edge(self, vertex1, vertex2, weight):
+        vertex1 = vertex1.upper()
+        vertex2 = vertex2.upper()
         if vertex1 not in self.vertex_map or vertex2 not in self.vertex_map:
             print(f"[!] Um ou ambos os vértices ('{vertex1}', '{vertex2}') não existem.")
             return
